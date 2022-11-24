@@ -1,4 +1,5 @@
 import noobApi from "../noobApi/index.js"
+
     noobApi.自定义菜单.块标菜单.注册自定义菜单项(
         {
             id: '添加移动目标菜单',
@@ -34,7 +35,7 @@ import noobApi from "../noobApi/index.js"
     }
     async function 获取菜单数据(块id) {
         let stmt = `select * from blocks where id in (select root_id from blocks  where id = "${块id}" )`
-        let 文档数据 = (await 核心api.sql({ stmt: stmt }))[0]
+        let 文档数据 = (await noobApi.核心api.sql({ stmt: stmt }))[0]
         return 文档数据
     }
 

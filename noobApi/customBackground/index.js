@@ -1,4 +1,4 @@
-export function 添加自定义随机背景图(){
+export default function 添加自定义随机背景图(){
     async function 生成随机背景链接() {
         let 请求响应 = await fetch('/snippets/assets/backgrounds/')
         let 临时dom = new DOMParser().parseFromString(await 请求响应.text(), "text/html")
