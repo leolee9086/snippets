@@ -1,0 +1,18 @@
+[
+  {
+    "id": "20221121104629-vfx5po4",
+    "name": "自定义菜单",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content": "import ('/snippets/noobApi/index.js')"
+  },
+  {
+    "id": "20221122201806-td60igd",
+    "name": "快速移动",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content":  "import ('/snippets/quickMove/index.js')"
+  }
+]
