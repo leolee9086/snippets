@@ -1,6 +1,6 @@
 //记得导入这个文件，路径要对，怎么个对法自己琢磨一下呗
 import 核心api from './kernelApi.js'
-export async function 移动块(当前块id, 目标id) {
+export async function 根据目标id移动块到文档(当前块id, 目标id) {
     if (!当前块id) { return }
     if (!目标id) { return }
     let 当前块dom = (await 核心api.获取文档({ id: 当前块id, size: 102400 }, '')).content
@@ -20,3 +20,15 @@ export async function 移动块(当前块id, 目标id) {
         )
     }
 }
+
+export async function 根据目标id移动块所在文档(当前块id,目标id){
+    if (!当前块id) { return }
+    if (!目标id) { return }
+    let {path:fromPath,box:fromNotebook} = (await 核心api.获取文档({ id: 当前块id, size: 102400 }, ''))
+    let {path:toPath,box:toNotebook,rootID} = (await 核心api.获取文档({ id: 目标id, size: 102400 }, ''))
+    await 核心api.批量移动文档(
+        {
+            fromPaths:[fromPath],fromNotebook,toPath,toNotebook
+        }
+    )
+} 

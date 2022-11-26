@@ -1,3 +1,4 @@
+import {生成单个dom元素} from '../util/dom.js'
 let 待渲染菜单项目数组 = [
 
 ]
@@ -56,7 +57,15 @@ function 插入菜单元素(菜单项目元素) {
 }
 //用来生成和插入元素
 function 生成菜单项目元素(菜单项配置) {
-    let 临时容器 = document.createElement('div')
+    let 菜单项模板 = `
+    <button class="b3-menu__item" data-item-id="${菜单项配置.id}">
+        <svg class="b3-menu__icon" style="">
+            <use xlink:href="${菜单项配置.图标}"></use>
+        </svg>
+        <span class="b3-menu__label">${菜单项配置.文字}</span>
+    </button>
+    `
+    /*let 临时容器 = document.createElement('div')
     临时容器.innerHTML = `
         <button class="b3-menu__item" data-item-id="${菜单项配置.id}">
             <svg class="b3-menu__icon" style="">
@@ -67,8 +76,12 @@ function 生成菜单项目元素(菜单项配置) {
 	`
     //起个名字让它好记一点嘛
     let 菜单项元素 = 临时容器.firstElementChild
-    菜单项元素.addEventListener("click", 菜单项配置.点击回调函数)
-    return 菜单项元素
+    菜单项元素.addEventListener("click", 菜单项配置.点击回调函数)*/
+    if(菜单项配置.点击回调函数){
+    return 生成单个dom元素(菜单项模板,菜单项配置.点击回调函数)
+    }else{
+        return 生成单个dom元素(菜单项模板,菜单项配置.事件配置)
+    }
 }
 function 生成多级菜单项目元素(菜单项配置) {
     let 菜单项元素 = 生成菜单项目元素(菜单项配置)
@@ -98,8 +111,9 @@ let 自定义块标菜单 = {
         if (目标菜单项) {
             !目标菜单项.子菜单配置 ? 目标菜单项.子菜单配置 = [] : null
             let 重复子菜单项 = 目标菜单项.子菜单配置.find(
-                待检查项子菜单项 => { return 待检查项子菜单项.id == 子菜单项 }
+                待检查项子菜单项 => { return 待检查项子菜单项.id == 子菜单项.id }
             )
+            console.log(目标菜单项,子菜单项)
             if(!重复子菜单项){
                 目标菜单项.子菜单配置.push(子菜单项)
             }

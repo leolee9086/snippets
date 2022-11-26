@@ -65,6 +65,8 @@ export class  kernelApiList{
 	this.set("POST", "/api/filetree/renameDoc",  'renameDoc','重命名文档')
 	this.set("POST", "/api/filetree/removeDoc", 'removeDoc','删除文档')
 	this.set("POST", "/api/filetree/moveDoc", 'moveDoc','移动文档')
+	this.set("POST", "/api/filetree/moveDocs", 'moveDocs','批量移动文档')
+
 	this.set("POST", "/api/filetree/duplicateDoc",  'duplicateDoc','复制文档')
 	this.set("POST", "/api/filetree/getHPathByPath", 'getHPathByPath','通过路径获取文档可读路径')
 	this.set("POST", "/api/filetree/getHPathByID", 'getHPathByID','通过id获取文档可读路径')
