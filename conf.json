@@ -14,5 +14,13 @@
     "type": "js",
     "enabled": true,
     "content":  "import ('/snippets/quickMove/index.js')"
+  },
+  {
+    "id": "20221122201806-td60ikd",
+    "name": "发布",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content":  "import ('/snippets/browserTab/index.js')"
   }
 ]
