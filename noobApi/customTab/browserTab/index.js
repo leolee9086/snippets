@@ -9,8 +9,16 @@ function onclick(e) {
         let wndElement = getWndParentElement(e.target)
         let layout
         if(wndElement){
-        layout = getLayoutByElement(wndElement, siyuan.layout.centerLayout)
-        layout.addTab((new BrowserTab({ url: e.target.dataset.href, title: e.target.dataset.tilte || e.target.innerHTML })))
+            layout = getLayoutByElement(wndElement, siyuan.layout.centerLayout)
+            if(layout){
+                layout.addTab((new BrowserTab({ url: e.target.dataset.href, title: e.target.dataset.tilte || e.target.innerHTML })))
+            }
+            else{
+                layout =  展平Layout().find(
+                    item=>{return item&&item.model&&item.model.editor}
+                )
+                layout.parent.addTab((new BrowserTab({ url: e.target.dataset.href, title: e.target.dataset.tilte || e.target.innerHTML })))
+            }
         }
         else{
             layout =  展平Layout().find(
