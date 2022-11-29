@@ -33,4 +33,45 @@ export default function 添加自定义随机背景图(){
         }
     }
 }
+let 自定义题图按钮 = []
+export function 注册自定义题图按钮(按钮选项){
+    
+    自定义题图按钮.push(按钮选项)
+}
+function 注入全部题图按钮(){
+    let 题图按钮数组 = document.querySelectorAll('.protyle-background__img .protyle-icons')
+    题图按钮数组.forEach(
+        题图按钮组=>{
+            注入题图按钮(题图按钮组)
+        }
+    )
+}
+function 注入题图按钮(按钮组){
+    自定义题图按钮.forEach(
+        按钮配置=>{
+            try{
+            if(!按钮组.querySelector(`[data-item-id=${按钮配置.id}]`)){
+                生成题图按钮(按钮配置,按钮组)
+            }
+            }catch(e){
+                console.error(e)
+            }
+        }
+    )
+}
+function 生成题图按钮(按钮配置,按钮组){
+    let span =document.createElement("span");
+    span.setAttribute("class", "protyle-icon b3-tooltips b3-tooltips__sw ");
+    span.setAttribute("data-item-id", 按钮配置.id);
+    span.setAttribute("aria-label", 按钮配置.label);
+    span.setAttribute("style", "relative");
+    span.addEventListener("click", 按钮配置.回调函数);
+    span.innerHTML = `<svg><use xlink:href="${按钮配置.图标}"></use></svg>`;
+    let 随机按钮 = 按钮组.querySelector(
+      "[aria-label='上下拖动图片以调整位置']"
+    );
+    按钮组.insertBefore(span, 随机按钮);
+
+}
+setInterval(注入全部题图按钮,300)
 

@@ -22,5 +22,13 @@
     "type": "js",
     "enabled": true,
     "content":  "import ('/snippets/Publisher/index.js')"
+  },
+  {
+    "id": "20221122201806-rr55gk4",
+    "name": "题图按钮",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content":  "import ('/snippets/morebackGround/index.js')"
   }
 ]
