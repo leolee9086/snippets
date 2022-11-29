@@ -1,5 +1,4 @@
 import 工作空间  from './workspace/index.js'
-
 if(!window.noobApi){
 	if(window.require){
 		let {监听文件修改}= await import('./util/file.js')
@@ -18,6 +17,4 @@ if(!window.noobApi){
 }
 
 export default window.noobApi
-
-
 

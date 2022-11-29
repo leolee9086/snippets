@@ -135,6 +135,9 @@ export class  kernelApiList{
 	this.set("POST", "/api/ref/refreshBacklink", 'refreshBacklink','刷新反向链接')
 	this.set("POST", "/api/ref/getBacklink", 'getBacklink','获取反向链接')
 	this.set("POST", "/api/ref/createBacklink", 'createBacklink','创建反向链接')
+	this.set("POST", "/api/ref/getBacklinkDoc", 'getBacklinkDoc','获取反链文档')
+	this.set("POST", "/api/ref/getBackmentionDoc", 'getBackmentionDoc','获取提及文档')
+
     //属性相关
 	this.set("POST", "/api/attr/getBookmarkLabels",  'getBookmarkLabels','获取书签标签')
 	this.set("POST", "/api/attr/resetBlockAttrs", 'resetBlockAttrs','重置块属性')

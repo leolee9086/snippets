@@ -20,10 +20,13 @@ export function getClosestLayout(el) {
 }
 export function getWndParentElement(element) {
     let parent = element.parentElement
+    if(parent){
     if (parent.dataset && parent.dataset.type == "wnd") {
         return parent.parentElement
     }
     else {
         return getWndParentElement(parent)
     }
+    }
+    else return null
 }

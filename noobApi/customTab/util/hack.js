@@ -1,5 +1,6 @@
-import { 展平Layout } from "../index.js";
-let tab注册表= {}
+import { 展平Layout } from "./Tab.js";
+export let tab注册表= {}
+
 export const hackLayout=()=>{
     let layouts = 展平Layout()
     layouts.forEach(
@@ -16,16 +17,12 @@ export const hackLayout=()=>{
                         layout.parent.removeTab(layout.id)
                     }
                 }catch(e){
-//                    console.error(e)
+                  //console.error(e)
                 }
             }
         }
     )
 }
-export function 注册自定义tab(类型,构造函数){
-    tab注册表[类型]=构造函数
 
-    hackLayout()
-}
 document.addEventListener('mouseover',hackLayout)
 hackLayout()

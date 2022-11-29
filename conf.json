@@ -16,11 +16,11 @@
     "content":  "import ('/snippets/quickMove/index.js')"
   },
   {
-    "id": "20221122201806-td60ikd",
-    "name": "发布",
+    "id": "20221122201806-td92ghk",
+    "name": "快速移动",
     "memo": "",
     "type": "js",
     "enabled": true,
-    "content":  "import ('/snippets/browserTab/index.js')"
+    "content":  "import ('/snippets/Publisher/index.js')"
   }
 ]
