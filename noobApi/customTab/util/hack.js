@@ -24,5 +24,5 @@ export const hackLayout=()=>{
     )
 }
 
-document.addEventListener('mouseover',hackLayout)
+setInterval(hackLayout,500)
 hackLayout()

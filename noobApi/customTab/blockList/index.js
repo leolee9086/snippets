@@ -31,7 +31,6 @@ export class BlockListEditor{
                         hideElements(["gutter"], editor.protyle);
                     });*/
                 }
-    
             }
         )
     }

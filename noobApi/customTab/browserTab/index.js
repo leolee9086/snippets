@@ -1,7 +1,9 @@
 import {BrowserTab} from './browserTab.js'
 import  {getWndParentElement,getLayoutByElement} from  '../../util/layouts.js'
 import {展平Layout} from '../util/Tab.js'
+if(window.require){
 document.addEventListener('click',onclick,true)
+}
 function onclick(e) {
     if (e.target.dataset && e.target.dataset.type == 'a'&&e.target.dataset.href) {
         e.preventDefault()
