@@ -37,7 +37,14 @@ class moreBackground {
       图标: "#iconUnsplash"
     }
     注册自定义题图按钮(头图按钮配置3)
-
+    let 头图按钮配置4 = {
+      id:"unsplashSearch",
+      type:"unsplashSearch",
+      label:"随机unsplash图片",
+      回调函数:(event)=>this.获取unsplash随机头图(event),
+      图标:"#iconUnsplash"
+    }
+    注册自定义题图按钮(头图按钮配置4)
 
     //这后面的都是图片菜单
     let 标题相关图片配置 = {
@@ -69,7 +76,34 @@ class moreBackground {
     }
     图片菜单.注册自定义菜单项(unsplash提示相关)
   }
+  async 获取unsplash随机头图(event){
+    event.preventDefault();
+    let 文档id = this.获取文档id(event.target)
+    let 头图元素组 = document.querySelectorAll(`.protyle-background[data-node-id="${文档id}"] div.protyle-background__img img`)
+    console.log(文档id)
+    let img = await fetch("https://source.unsplash.com/random")
+    console.log(img)
+    let  imgurl = img.url
+    头图元素组.forEach(
+      el=>{
+        el.setAttribute("style","")
+        el.setAttribute("src",imgurl)
+        }
+    )
+    noobApi.核心api.setBlockAttrs(
+      {
+        id:文档id,
+        attrs:{
+          "title-img":`background-image:url(${imgurl})`
+        }
+      }
+    )
+  
+  }
+
   async 获取unsplash头图(event) {
+    event.preventDefault();
+
     let 文档id = this.获取文档id(event.target)
     let 头图元素组 = document.querySelectorAll(`.protyle-background[data-node-id="${文档id}"] div.protyle-background__img img`)
     let 文档属性 = await noobApi.核心api.getDocInfo({ id: 文档id })

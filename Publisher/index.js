@@ -1,39 +1,4 @@
 import noobApi from "../noobApi/index.js";
-import { GetJsonWithCookie } from "./util/cookieRequest.js";
-await fetch('https://zhuanlan.zhihu.com')
-let res1 = await GetJsonWithCookie(
-    {
-        url:
-            'https://www.zhihu.com/api/v4/me?include=account_status%2Cis_bind_phone%2Cis_force_renamed%2Cemail%2Crenamed_fullname',
-    }
-)
-console.log(res1)
-let res = await fetch(
-    'https://zhuanlan.zhihu.com/api/articles/drafts',
-
-    {
-        method: 'post',
-        body: JSON.stringify({
-            title: 'h',
-            delta_time: 0
-        }),
-        headers: {
-            accept: 'application/json, text/javascript, */*; q=0.01',
-            authority: "zhuanlan.zhihu.com",
-            "user-agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4101.0 Safari/537.36 Edg/83.0.474.0",
-            origin: "https://zhuanlan.zhihu.com",
-            "sec-fetch-site": "same-origin",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-dest": "empty",
-            referer: "https://zhuanlan.zhihu.com/write",
-            "x-requested-with": "fetch",
-            'content-type': 'application/json,UTF-8',
-            'data-type': 'JSON'
-        }
-    }
-)
-console.log(await res.json())
 
 if (window.$syncer) {
     let allAccounts = []
