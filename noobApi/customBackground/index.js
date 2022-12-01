@@ -50,7 +50,7 @@ function 注入题图按钮(按钮组){
     自定义题图按钮.forEach(
         按钮配置=>{
             try{
-            if(!按钮组.querySelector(`[data-item-id=${按钮配置.id}]`)){
+            if(按钮组.querySelector(`[data-type='random']`)&&!按钮组.querySelector(`[data-item-id=${按钮配置.id}]`)){
                 生成题图按钮(按钮配置,按钮组)
             }
             }catch(e){
@@ -71,7 +71,6 @@ function 生成题图按钮(按钮配置,按钮组){
       "[aria-label='上下拖动图片以调整位置']"
     );
     按钮组.insertBefore(span, 随机按钮);
-
 }
 setInterval(注入全部题图按钮,300)
 
