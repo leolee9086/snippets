@@ -44,7 +44,7 @@ async function 渲染页面(块id) {
         发布数据.thumb = 文档属性.ial['title-img']
         return 发布数据
     } else {
-        return {content:'<h1 style="font-size:200px;color:red">这个文档除了我自己谁都不准看</h1>'}
+        return {content:'<h1 style="font-size:200px;color:red">看什么看,这个不是公开的!!!!!!</h1>'}
     }
 }
 function 转换图片地址(文档内容) {
