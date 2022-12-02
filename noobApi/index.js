@@ -12,6 +12,7 @@ if(!window.noobApi){
 			事件类型:['change']
 		}
 		监听文件修改(监听选项)
+		await import('./server/index.js')
 	}
 	await import('./api.js')
 }
