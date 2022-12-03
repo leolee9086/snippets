@@ -19,7 +19,6 @@ export function 生成管线渲染器(渲染管线,模板路径,原始数据生�
         let 渲染结果 = new DOMParser().parseFromString(fs.readFileSync(模板路径), "text/html");
         if(!渲染结果.getElementById('metadata')){
             渲染结果.head.insertAdjacentHTML('afterbegin',`<script>${获取全部原始数据.toString()}${设置原始数据属性值.toString()}</script>`)
-
             渲染结果.head.insertAdjacentHTML('afterbegin','<script id="metadata" data-render-status></script>')
         }
         await 原始数据生成器(req,res,渲染结果)

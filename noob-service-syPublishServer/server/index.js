@@ -2,6 +2,8 @@ import noobApi from '../../noobApi/index.js'
 import { 代码片段路径 } from './util/file.js'
 import './util/requireHacker.js'
 import {生成管线渲染器,初始化原始数据,获取全部原始数据} from './util/pipe.js'
+import { 根据路径获取文档权限 } from './authentic/block.js'
+import { 根据名称获取附件权限 } from './authentic/assets.js'
 require.setExternalDeps(代码片段路径 + `/noob-service-syPublishServer/node_modules`)
 const http = require('http')
 const express = require('express')
@@ -9,7 +11,6 @@ const 发布应用 = express()
 const 发布端口 = '80'
 const fs = require('fs')
 发布应用.use('/', async (req, res, next) => {
-    console.log(req)
     req.url == '/' ? res.redirect('/20200812220555-lj3enxa') : null
     next()
 })
@@ -79,18 +80,8 @@ const 思源代理 = createProxyMiddleware({
     changeOrigin: true,
 })
 async function 判定附件权限(req){
-    let sql = `select * 
-	from assets 
-	where root_id in (
-		select root_id from blocks where id in (select block_id from attributes where name = 'custom-publish-access' and value = 'public')
-	)`
-    let 可访问附件列表= await noobApi.核心api.sql({stmt:sql})
-    console.log(req.url)
-    return 可访问附件列表.find(
-        附件=>{
-            return '/'+ 附件.name == req.url
-        }
-    )
+    let 附件名称 = req.url.split('/').pop()
+    return await 根据名称获取附件权限(附件名称)
 }
 发布应用.use('/assets',async (req,res,next)=>{
     if(await 判定附件权限(req)){
@@ -104,8 +95,10 @@ async function 判定附件权限(req){
 },思源代理)
 //这个要放到后面
 async function 判定文档权限(块id){
-    let sql = `select * from blocks where id='${块id}' and root_id in (select block_id from attributes where name='custom-publish-access' and value='public')`  
-    return (await noobApi.核心api.sql({stmt:sql}))[0]
+    let 文档路径 = (await 获取文档内容(块id)).path
+    let 文档权限 = await 根据路径获取文档权限(文档路径)
+    console.log(文档权限)
+    return (await 根据路径获取文档权限(文档路径))=='public'
 }
 发布应用.use('/:blockID',async(req,res,next)=>{
     if(await 判定文档权限(req.params.blockID)){
