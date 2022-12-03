@@ -1,3 +1,4 @@
+import noobApi from '../../noobApi/index.js'
 import { 代码片段路径 } from './util/file.js'
 import './util/requireHacker.js'
 import {生成管线渲染器,初始化原始数据,获取全部原始数据} from './util/pipe.js'
@@ -42,11 +43,80 @@ function 禁用编辑(document){
 		element=>{element.setAttribute('contenteditable',false)}
 	)
 }
-let 默认渲染管线 = 生成管线渲染器([渲染页面内容,禁用编辑], 默认模板路径,注入思源文档原始数据)
+function 修改块链接(document){
+    document.head.insertAdjacentHTML('beforeend','<style>span a{color:inherit !important}</style>')
+    document.querySelectorAll('span[data-type="block-ref"]').forEach(
+        块链接=>{
+            let 锚文本 = 块链接.innerText
+            块链接.innerHTML=`<a href='/${块链接.getAttribute('data-id')}'>${锚文本}</a>`
+        }
+    )
+}
+function 修改超链接(document){
+    document.querySelectorAll('span[data-type="a"]').forEach(
+        块链接=>{
+            let 锚文本 = 块链接.innerText
+            块链接.innerHTML=`<a href='${块链接.getAttribute('data-href')}'>${锚文本}</a>`
+        }
+    )
+}
+function 添加页脚(document){
+    document.body.insertAdjacentHTML('beforeend',`
+    <div style='text-align:center'>
+       <div> poweredBy <a href='https://b3log.org/siyuan/' target='_blank'>siyuan@${window.siyuan.config.system.kernelVersion}</a> with <a target='_blank' href='https://www.chuanchengsheji.com'>noob </a></div>
+       <div> <a href='https://afdian.net/a/leolee9086'>请noob作者喝一杯咖啡</a></div>
+    </div>
+    `)
+}
+let 默认渲染管线 = 生成管线渲染器([渲染页面内容,禁用编辑,修改块链接,修改超链接,添加页脚], 默认模板路径,注入思源文档原始数据)
 发布应用.use('/appearance',express.static(代码片段路径 + 'publishTemplate/default/appearance'))
 发布应用.use('/stage',express.static(代码片段路径 + 'publishTemplate/default/stage'))
 
-发布应用.use('/:blockID', 默认渲染管线)
+const { createProxyMiddleware } = require('http-proxy-middleware')
+
+const 思源代理 = createProxyMiddleware({
+    target: `http://127.0.0.1:6806`,
+    changeOrigin: true,
+})
+async function 判定附件权限(req){
+    let sql = `select * 
+	from assets 
+	where root_id in (
+		select root_id from blocks where id in (select block_id from attributes where name = 'custom-publish-access' and value = 'public')
+	)`
+    let 可访问附件列表= await noobApi.核心api.sql({stmt:sql})
+    console.log(req.url)
+    return 可访问附件列表.find(
+        附件=>{
+            return '/'+ 附件.name == req.url
+        }
+    )
+}
+发布应用.use('/assets',async (req,res,next)=>{
+    if(await 判定附件权限(req)){
+        next()
+    }
+    else {
+        res.status('403')
+        res.setHeader('Content-Type',"text/html;charset=utf-8" );
+        res.end('不可访问此附件')
+    }
+},思源代理)
+//这个要放到后面
+async function 判定文档权限(块id){
+    let sql = `select * from blocks where id='${块id}' and root_id in (select block_id from attributes where name='custom-publish-access' and value='public')`  
+    return (await noobApi.核心api.sql({stmt:sql}))[0]
+}
+发布应用.use('/:blockID',async(req,res,next)=>{
+    if(await 判定文档权限(req.params.blockID)){
+        next()
+    }else{
+        res.status('403')
+        res.setHeader('Content-Type',"text/html;charset=utf-8" );
+        res.end('不可访问此文档')
+
+    }
+},默认渲染管线)
 
 let 发布服务器 = http.createServer(发布应用);
 发布服务器.listen(发布端口, () => {
@@ -54,62 +124,3 @@ let 发布服务器 = http.createServer(发布应用);
 
 })
 
-
-
-
-/*export function 生成管线渲染器(渲染管线, 模板路径) {
-    return async (req,res) => {
-        //这里是告诉浏览器,我返回的是一个html页面
-        res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
-        let 渲染结果 = new DOMParser().parseFromString(fs.readFileSync(模板路径), "text/html");
-        //这里是一个循环,不断地把渲染结果和请求喂给它们,所以渲染管线中的每一步也都可以跳出去,直接响应请求
-        for await (let 渲染函数 of 渲染管线) {
-            try {
-                //如果渲染结果没有这个函数说明它不是数据了
-                if (!渲染结果.querySelector) {
-                    let tempdoc = new DOMParser().parseFromString(
-                        渲染结果,
-                        "text/html"
-                    );
-                    渲染结果 = tempdoc;
-
-                }
-                if (渲染结果.完成) {
-                    return 渲染结果;
-                }
-                if (渲染函数 instanceof Function) {
-                    渲染结果 = (await 渲染函数(req, res, 渲染结果)) || "";
-                }
-                let 文字渲染结果 = "";
-                try {
-                    文字渲染结果 = 渲染结果.querySelector("body").innerHTML;
-                } catch (e) {
-                    文字渲染结果 = 渲染结果;
-                    let tempdoc = new DOMParser().parseFromString(
-                        文字渲染结果,
-                        "text/html"
-                    );
-                    渲染结果 = tempdoc;
-                    console.error(e);
-                }
-            } catch (e) {
-                console.error(e);
-                continue;
-            }
-        }
-        //如果有结果就返回结果
-        try {
-            if (渲染结果) {
-                res.end(渲染结果.documentElement.innerHTML)
-            }
-            else {
-                res.end('渲染出错,没有有效的结果')
-            }
-        } catch (e) {
-            渲染结果 = null
-            console.error(e)
-        }
-        //万一我们这里对它还有其他操作呢
-        return 渲染结果
-    }
-}  */
