@@ -1,6 +1,6 @@
 import { 代码片段路径 } from './util/file.js'
 import './util/requireHacker.js'
-require.setExternalDeps(代码片段路径 + `/noobApi/node_modules`)
+require.setExternalDeps(代码片段路径 + `/noob-service-syPublishServer/node_modules`)
 const http = require('http')
 const express = require('express')
 const 发布应用 = express()

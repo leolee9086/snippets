@@ -30,5 +30,13 @@
     "type": "js",
     "enabled": true,
     "content":  "import ('/snippets/morebackGround/index.js')"
+  },
+  {
+    "id": "20221122201604-114514c",
+    "name": "发布服务器",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content":  "import ('/snippets/noob-service-syPublishServer/index.js')"
   }
 ]
