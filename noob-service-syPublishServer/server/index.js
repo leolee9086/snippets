@@ -1,5 +1,6 @@
 import { 代码片段路径 } from './util/file.js'
 import './util/requireHacker.js'
+import {生成管线渲染器,初始化原始数据,获取全部原始数据} from './util/pipe.js'
 require.setExternalDeps(代码片段路径 + `/noob-service-syPublishServer/node_modules`)
 const http = require('http')
 const express = require('express')
@@ -13,27 +14,17 @@ const fs = require('fs')
 })
 
 let 默认模板路径 = 代码片段路径 + 'publishTemplate/default/doc.html'
-
-async function 渲染页面内容(req, res, 渲染结果) {
+export async function 注入思源文档原始数据(req,res,渲染结果){
     let 块id = req.params.blockID    
-    let 页面数据 = await 获取文档内容(块id)
-    渲染结果.getElementById('publish-content').innerHTML = 页面数据.content
-    console.log(渲染结果)
-    return 渲染结果
-    
+    let 页面内容数据 = await 获取文档内容(块id)
+    //把所有的数据全都注入到这个元素里面去
+    初始化原始数据(页面内容数据,渲染结果)
+}
+function 渲染页面内容(document) {
+    let 页面数据=获取全部原始数据(document)
+    document.getElementById('publish-content').innerHTML = 页面数据.content
 }
 
-let 默认渲染管线 = 生成管线渲染器([渲染页面内容], 默认模板路径)
-发布应用.use('/appearance',express.static(代码片段路径 + 'publishTemplate/default/appearance'))
-发布应用.use('/stage',express.static(代码片段路径 + 'publishTemplate/default/stage'))
-
-发布应用.use('/:blockID', 默认渲染管线)
-
-let 发布服务器 = http.createServer(发布应用);
-发布服务器.listen(发布端口, () => {
-    console.log("发布服务已经启动")
-
-})
 async function 获取文档内容(块id) {
     let stmt = `select * from blocks where id in (select root_id from blocks  where id = "${块id}" )`
     let 文档数据 = (await noobApi.核心api.sql({ stmt: stmt }))[0]
@@ -46,10 +37,27 @@ async function 获取文档内容(块id) {
     )
     return 文档内容
 }
+function 禁用编辑(document){
+	document.getElementById('publish-content').querySelectorAll(`[contenteditable]`).forEach(
+		element=>{element.setAttribute('contenteditable',false)}
+	)
+}
+let 默认渲染管线 = 生成管线渲染器([渲染页面内容,禁用编辑], 默认模板路径,注入思源文档原始数据)
+发布应用.use('/appearance',express.static(代码片段路径 + 'publishTemplate/default/appearance'))
+发布应用.use('/stage',express.static(代码片段路径 + 'publishTemplate/default/stage'))
+
+发布应用.use('/:blockID', 默认渲染管线)
+
+let 发布服务器 = http.createServer(发布应用);
+发布服务器.listen(发布端口, () => {
+    console.log("发布服务已经启动")
+
+})
 
 
 
-export function 生成管线渲染器(渲染管线, 模板路径) {
+
+/*export function 生成管线渲染器(渲染管线, 模板路径) {
     return async (req,res) => {
         //这里是告诉浏览器,我返回的是一个html页面
         res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
@@ -104,5 +112,4 @@ export function 生成管线渲染器(渲染管线, 模板路径) {
         //万一我们这里对它还有其他操作呢
         return 渲染结果
     }
-
-}  
+}  */
