@@ -1,4 +1,6 @@
 import 工作空间  from './workspace/index.js'
+import { 代码片段路径 } from './util/file.js'
+import requireHacker from './util/requireHacker.js'
 if(!window.noobApi){
 	if(window.require){
 		let {监听文件修改}= await import('./util/file.js')
@@ -12,6 +14,7 @@ if(!window.noobApi){
 			事件类型:['change']
 		}
 		监听文件修改(监听选项)
+		requireHacker.setExternalDeps(代码片段路径+'/node_modules')
 	}
 	await import('./api.js')
 }

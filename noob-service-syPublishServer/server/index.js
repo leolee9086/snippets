@@ -1,6 +1,6 @@
 import noobApi from '../../noobApi/index.js'
-import { 代码片段路径 } from './util/file.js'
-import './util/requireHacker.js'
+import { 代码片段路径 } from '../../noobApi/util/file.js'
+import '../../noobApi/util/requireHacker.js'
 import {生成管线渲染器,初始化原始数据,获取全部原始数据} from './util/pipe.js'
 import { 根据路径获取文档权限 } from './authentic/block.js'
 import { 根据名称获取附件权限 } from './authentic/assets.js'

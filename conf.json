@@ -38,5 +38,13 @@
     "type": "js",
     "enabled": true,
     "content":  "import ('/snippets/noob-service-syPublishServer/index.js')"
+  },
+  {
+    "id": "20221201201802-zymmyxs",
+    "name": "vite服务器",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content":  "import ('/snippets/noob-service-vite/index.js')"
   }
 ]
