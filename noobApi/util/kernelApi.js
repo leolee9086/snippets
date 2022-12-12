@@ -22,6 +22,8 @@ export class  kernelApiList{
 	this.set("POST", "/api/system/loginAuth", "LoginAuth","登录鉴权")
 	this.set("POST", "/api/system/logoutAuth", "LogoutAuth","退出登录")
 	// 需要鉴权
+	this.set("POST", "/api/transactions", 'transactions','获取emoji配置')
+
 	this.set("POST", "/api/system/getEmojiConf", 'getEmojiConf','获取emoji配置')
 	this.set("POST", "/api/system/setAccessAuthCode",  'setAccessAuthCode','设置鉴权码')
 	this.set("POST", "/api/system/setNetworkServe", 'setNetworkServe','设置网络服务器')
@@ -128,6 +130,8 @@ export class  kernelApiList{
 	this.set("POST", "/api/block/updateBlock",  'updateBlock','更新块')
 	this.set("POST", "/api/block/deleteBlock", 'deleteBlock','删除块')
 	this.set("POST", "/api/block/setBlockReminder", 'setBlockReminder','设置块提醒')
+	this.set("POST", "/api/block/getBlockKramdown", 'getBlockKramdown','获取块Kramdown')
+
     //文件相关
 	this.set("POST", "/api/file/getFile", 'getFile','获取文件')
 	this.set("POST", "/api/file/putFile", 'putFile','上传文件')

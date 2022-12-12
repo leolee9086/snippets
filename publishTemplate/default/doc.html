@@ -1,71 +1,183 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" type="text/css" id="themeDefaultStyle" href="stage/build/export/base.css?2.5.2"/>
-    <link rel="stylesheet" type="text/css" id="themeStyle" href="appearance/themes/daylight/theme.css?2.5.2"/>
-    <title>C:\Users\al765\Desktop\请从这里开始 - 思源笔记  v2.5.2</title>
-    <style>
-        body {background-color: var(--b3-theme-background);color: var(--b3-theme-on-background)}
-        .b3-typography, .protyle-wysiwyg, .protyle-title {font-size:16px !important}
-.b3-typography code:not(.hljs), .protyle-wysiwyg span[data-type~=code] { font-variant-ligatures: none }
-.li > .protyle-action {height:34px;line-height: 34px}
-.protyle-wysiwyg [data-node-id].li > .protyle-action ~ .h1, .protyle-wysiwyg [data-node-id].li > .protyle-action ~ .h2, .protyle-wysiwyg [data-node-id].li > .protyle-action ~ .h3, .protyle-wysiwyg [data-node-id].li > .protyle-action ~ .h4, .protyle-wysiwyg [data-node-id].li > .protyle-action ~ .h5, .protyle-wysiwyg [data-node-id].li > .protyle-action ~ .h6 {line-height:34px;}
-.protyle-wysiwyg [data-node-id].li > .protyle-action:after {height: 16px;width: 16px;margin:-8px 0 0 -8px}
-.protyle-wysiwyg [data-node-id].li > .protyle-action svg {height: 14px}
-.protyle-wysiwyg [data-node-id] [spellcheck="false"] {min-height:26px;}
-.protyle-wysiwyg [data-node-id] { text-align: justify;}
-.protyle-wysiwyg .li {min-height:34px}
-.protyle-gutters button svg {height:26px}
-.protyle-wysiwyg img.emoji, .b3-typography img.emoji {width:18px}
-.protyle-wysiwyg .h1 img.emoji, .b3-typography h1 img.emoji {width:35px}
-.protyle-wysiwyg .h2 img.emoji, .b3-typography h2 img.emoji {width:31px}
-.protyle-wysiwyg .h3 img.emoji, .b3-typography h3 img.emoji {width:27px}
-.protyle-wysiwyg .h4 img.emoji, .b3-typography h4 img.emoji {width:25px}
-.protyle-wysiwyg .h5 img.emoji, .b3-typography h5 img.emoji {width:22px}
-.protyle-wysiwyg .h6 img.emoji, .b3-typography h6 img.emoji {width:20px}
-    </style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" id="themeDefaultStyle" href="stage/build/export/base.css?2.5.2" />
+  <link href="stage/build/desktop/base.db2e6df442830ace79b0.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" id="themeStyle" href="appearance/themes/daylight/theme.css" />
+  <title>C:\Users\al765\Desktop\请从这里开始 - 思源笔记 v2.5.2</title>
+  <style>
+    body {
+      background-color: var(--b3-theme-background);
+      color: var(--b3-theme-on-background)
+    }
+
+    .b3-typography,
+    .protyle-wysiwyg,
+    .protyle-title {
+      font-size: 16px !important
+    }
+
+    .b3-typography code:not(.hljs),
+    .protyle-wysiwyg span[data-type~=code] {
+      font-variant-ligatures: none
+    }
+
+    .li>.protyle-action {
+      height: 34px;
+      line-height: 34px
+    }
+
+    .protyle-wysiwyg [data-node-id].li>.protyle-action~.h1,
+    .protyle-wysiwyg [data-node-id].li>.protyle-action~.h2,
+    .protyle-wysiwyg [data-node-id].li>.protyle-action~.h3,
+    .protyle-wysiwyg [data-node-id].li>.protyle-action~.h4,
+    .protyle-wysiwyg [data-node-id].li>.protyle-action~.h5,
+    .protyle-wysiwyg [data-node-id].li>.protyle-action~.h6 {
+      line-height: 34px;
+    }
+
+    .protyle-wysiwyg [data-node-id].li>.protyle-action:after {
+      height: 16px;
+      width: 16px;
+      margin: -8px 0 0 -8px
+    }
+
+    .protyle-wysiwyg [data-node-id].li>.protyle-action svg {
+      height: 14px
+    }
+
+    .protyle-wysiwyg [data-node-id] [spellcheck="false"] {
+      min-height: 26px;
+    }
+
+    .protyle-wysiwyg [data-node-id] {
+      text-align: justify;
+    }
+
+    .protyle-wysiwyg .li {
+      min-height: 34px
+    }
+
+    .protyle-gutters button svg {
+      height: 26px
+    }
+
+    .protyle-wysiwyg img.emoji,
+    .b3-typography img.emoji {
+      width: 18px
+    }
+
+    .protyle-wysiwyg .h1 img.emoji,
+    .b3-typography h1 img.emoji {
+      width: 35px
+    }
+
+    .protyle-wysiwyg .h2 img.emoji,
+    .b3-typography h2 img.emoji {
+      width: 31px
+    }
+
+    .protyle-wysiwyg .h3 img.emoji,
+    .b3-typography h3 img.emoji {
+      width: 27px
+    }
+
+    .protyle-wysiwyg .h4 img.emoji,
+    .b3-typography h4 img.emoji {
+      width: 25px
+    }
+
+    .protyle-wysiwyg .h5 img.emoji,
+    .b3-typography h5 img.emoji {
+      width: 22px
+    }
+
+    .protyle-wysiwyg .h6 img.emoji,
+    .b3-typography h6 img.emoji {
+      width: 20px
+    }
+  </style>
 </head>
-<body>
-<div class="protyle-wysiwyg protyle-wysiwyg--attr" style="max-width: 800px;margin: 0 auto;" id="publish-content">
-{{content}}
-</div>
+
+<body class="fn__flex-column body--win32">
+  <!--这里到时候用来做导航栏-->
+  <div id="toolbar" class="toolbar fn__flex publishNavi"></div>
+  <!--这里是布局的主体-->
+  <div class="fn__flex-1 fn__flex">
+    <div id="layouts" class="layout fn__flex-1 fn__flex-column" style="transition: var(--b3-width-transition);">
+      <div class="fn__flex-1 fn__flex">
+
+        <div class="fn__flex-column fn__flex-shrink" id="panelLeft"
+          style="width: 300px; transition: var(--b3-width-transition);">
+        </div>
+        <div class="layout__resize--lr layout__resize" id="resizeLeft"></div>
+
+        <div class="layout__center fn__flex fn__flex-1" style="transition: var(--b3-width-transition);">
+          <div class="fn__flex fn__flex-1">
+            <div class="layout-tab-container fn__flex-1">
+              <div class="fn__flex-1 protyle" data-id="cdf2875f-40f2-45aa-8d8b-f92c23284907">
+                <div class="protyle-wysiwyg protyle-wysiwyg--attr" style="max-width: 800px;margin: 0 auto;"
+                  id="publish-content">
+                  {{content}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="layout__resize--lr layout__resize" id="resizeRight"></div>
+
+        <div class="fn__flex-column" id="panelRight" style="width: 300px; transition: var(--b3-width-transition);">
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--这里用来放状态栏和页脚那些-->
+  <div id="status" class="fn__flex status"></div>
+</body>
 <script src="appearance/icons/material/icon.js?2.5.2"></script>
 <script src="stage/build/export/protyle-method.js?2.5.2"></script>
-<script src="stage/protyle/js/lute/lute.min.js?2.5.2"></script>    
+<script src="stage/protyle/js/lute/lute.min.js?2.5.2"></script>
 <script>
-    window.siyuan = {
-      config: {
-        appearance: { mode: 0, codeBlockThemeDark: "base16/dracula", codeBlockThemeLight: "github" },
-        editor: { 
-          codeLineWrap: true,
-          codeLigatures: false,
-          plantUMLServePath: "https://www.plantuml.com/plantuml/svg/~1",
-          codeSyntaxHighlightLineNum: true,
-          katexMacros: JSON.stringify({}),
-        }
-      },
-      languages: {copy:"复制"}
-    };
-    const previewElement = document.getElementById('preview');
-    Protyle.highlightRender(previewElement, "stage/protyle");
-    Protyle.mathRender(previewElement, "stage/protyle", false);
-    Protyle.mermaidRender(previewElement, "stage/protyle");
-    Protyle.flowchartRender(previewElement, "stage/protyle");
-    Protyle.graphvizRender(previewElement, "stage/protyle");
-    Protyle.chartRender(previewElement, "stage/protyle");
-    Protyle.mindmapRender(previewElement, "stage/protyle");
-    Protyle.abcRender(previewElement, "stage/protyle");
-    Protyle.plantumlRender(previewElement, "stage/protyle");
-    document.querySelectorAll(".protyle-action__copy").forEach((item) => {
-      item.addEventListener("click", (event) => {
-            navigator.clipboard.writeText(item.parentElement.nextElementSibling.textContent.trimEnd());
-            event.preventDefault();
-            event.stopPropagation();
-      })
-    });
-</script></body></html>
+  window.siyuan = {
+    config: {
+      appearance: { mode: 0, codeBlockThemeDark: "base16/dracula", codeBlockThemeLight: "github" },
+      editor: {
+        codeLineWrap: true,
+        codeLigatures: false,
+        plantUMLServePath: "https://www.plantuml.com/plantuml/svg/~1",
+        codeSyntaxHighlightLineNum: true,
+        katexMacros: JSON.stringify({}),
+      }
+    },
+    languages: { copy: "复制" }
+  };
+  const previewElement = document.getElementById('preview');
+  Protyle.highlightRender(previewElement, "stage/protyle");
+  Protyle.mathRender(previewElement, "stage/protyle", false);
+  Protyle.mermaidRender(previewElement, "stage/protyle");
+  Protyle.flowchartRender(previewElement, "stage/protyle");
+  Protyle.graphvizRender(previewElement, "stage/protyle");
+  Protyle.chartRender(previewElement, "stage/protyle");
+  Protyle.mindmapRender(previewElement, "stage/protyle");
+  Protyle.abcRender(previewElement, "stage/protyle");
+  Protyle.plantumlRender(previewElement, "stage/protyle");
+  document.querySelectorAll(".protyle-action__copy").forEach((item) => {
+    item.addEventListener("click", (event) => {
+      navigator.clipboard.writeText(item.parentElement.nextElementSibling.textContent.trimEnd());
+      event.preventDefault();
+      event.stopPropagation();
+    })
+  });
+</script>
+
+</html>
