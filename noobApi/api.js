@@ -1,4 +1,4 @@
-import * as block from './util/blocks.js'
+import  block from './util/blocks.js'
 import 核心api from './util/kernelApi.js'
 import 自定义菜单 from './customMenu/index.js'
 import 添加自定义随机背景图 from './customBackground/index.js'
