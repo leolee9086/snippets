@@ -32,10 +32,3 @@ let noobApi={
     }
 }
 window.noobApi = noobApi
-noobApi.url动作.注册url动作('DailyNote', () => {
-    noobApi.核心api.创建日记({
-        notebook
-            :
-            "20210808180117-czj9bvb"
-    })
-})
