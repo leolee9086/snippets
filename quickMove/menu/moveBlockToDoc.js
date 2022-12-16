@@ -1,6 +1,6 @@
 import noobApi from "../../noobApi/index.js";
-const { 根据目标id移动块到文档, 根据目标id移动块所在文档} =noobApi.内容块
-export default function 注册菜单(){
+const { 根据目标id移动块到文档, 根据目标id移动块所在文档 } = noobApi.内容块
+export default function 注册菜单() {
     noobApi.自定义菜单.块标菜单.注册自定义菜单项(
         {
             id: '添加移动目标菜单',
@@ -16,12 +16,12 @@ export default function 注册菜单(){
             图标: `#iconMove`,
         }
     )
-    let 快速移动文档菜单项 =    {
+    let 快速移动文档菜单项 = {
         id: '快速移动当前文档菜单',
         文字: `快速移动当前文档到`,
         图标: `#iconMove`,
     }
-    
+
     noobApi.自定义菜单.编辑器菜单.注册自定义菜单项(快速移动文档菜单项)
     noobApi.自定义菜单.文档树菜单.注册自定义菜单项(快速移动文档菜单项)
 
@@ -34,7 +34,7 @@ export default function 注册菜单(){
         /*
         !快速移动文档菜单项.子菜单配置?快速移动文档菜单项.子菜单配置=[]:null
         快速移动文档菜单项.子菜单配置.push(await 生成移动文档菜单配置(当前块id))
-        */ 
+        */
     }
     async function 生成移动块菜单配置(块id) {
         console.log(块id)

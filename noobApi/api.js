@@ -8,6 +8,7 @@ import {生成单个dom元素} from './util/dom.js'
 import {Tab,注册自定义tab}  from './customTab/index.js'
 import * as layoutUtil from './util/layouts.js'
 import 注册图标 from './customIcon/index.js'
+import 注册url动作 from './UrlAction/index.js'
 添加自定义随机背景图()
 let noobApi={
 	自定义菜单:自定义菜单,
@@ -25,6 +26,16 @@ let noobApi={
         注册自定义tab,
         Tab,
         util:layoutUtil
+    },
+    url动作:{
+        注册url动作
     }
 }
 window.noobApi = noobApi
+noobApi.url动作.注册url动作('DailyNote', () => {
+    noobApi.核心api.创建日记({
+        notebook
+            :
+            "20210808180117-czj9bvb"
+    })
+})

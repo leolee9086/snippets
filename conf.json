@@ -13,7 +13,7 @@
     "memo": "",
     "type": "js",
     "enabled": true,
-    "content":  "import ('/snippets/quickMove/index.js')"
+    "content": "import ('/snippets/quickMove/index.js')"
   },
   {
     "id": "20221122201806-td92ghk",
@@ -21,7 +21,7 @@
     "memo": "",
     "type": "js",
     "enabled": true,
-    "content":  "import ('/snippets/Publisher/index.js')"
+    "content": "import ('/snippets/Publisher/index.js')"
   },
   {
     "id": "20221122201806-rr55gk4",
@@ -29,7 +29,7 @@
     "memo": "",
     "type": "js",
     "enabled": true,
-    "content":  "import ('/snippets/morebackGround/index.js')"
+    "content": "import ('/snippets/morebackGround/index.js')"
   },
   {
     "id": "20221122201604-114514c",
@@ -37,7 +37,7 @@
     "memo": "",
     "type": "js",
     "enabled": true,
-    "content":  "import ('/snippets/noob-service-syPublishServer/index.js')"
+    "content": "import ('/snippets/noob-service-syPublishServer/index.js')"
   },
   {
     "id": "20221201201802-zymmyxs",
@@ -45,6 +45,14 @@
     "memo": "",
     "type": "js",
     "enabled": true,
-    "content":  "import ('/snippets/noob-service-vite/index.js')"
+    "content": "import ('/snippets/noob-service-vite/index.js')"
+  },
+  {
+    "id": "20221215143812-paafbnm",
+    "name": "挂件槽",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content": "function showPreviousWidgetsSlot() {\n    setInterval(DocumentShowPreviousWidget, 300);\n}\nDocumentShowPreviousWidget()\nshowPreviousWidgetsSlot()\nfunction DocumentShowPreviousWidget() {\n    var openDoc = document.querySelectorAll(\".layout-tab-container\u003e.fn__flex-1.protyle:not(.fn__none)\");\n    var allDocumentTitleElement = [];\n    for (let index = 0; index \u003c openDoc.length; index++) {\n        const element = openDoc[index];\n        element.setAttribute(\"withPreviousWidgets\", true);\n        allDocumentTitleElement.push(element.children[1].children[1].children[1]);\n    }\n\n    for (let index = 0; index \u003c allDocumentTitleElement.length; index++) {\n        const element = allDocumentTitleElement[index];\n\n        if ( !element.parentElement.querySelector('.previous-widgets-slot')\u0026\u0026element.parentElement.parentElement.querySelector('[data-node-id]')) {\n            var documentPreviousWidgetsSlotElement = CreatePreviousWidgetsSlot(element.parentElement);\n            element.parentElement.appendChild(documentPreviousWidgetsSlotElement)\n        }\n \n    }\n}\nfunction CreatePreviousWidgetsSlot(element) {\n    let cloneNode = element.parentElement.querySelector(\".protyle-wysiwyg.protyle-wysiwyg--attr\").cloneNode(false)\n    cloneNode.innerHTML = `\n    \u003cdiv class=\"iframe-content\"\u003e\n        \u003ciframe src=\"/widgets/${cloneNode.getAttribute('custom-previousWidget') || '更美观的文档自定义属性'}/\" \u003e\u003c/iframe\u003e\n    \u003c/div\u003e\n    `\n    let id = element.parentElement.parentElement.querySelector('[data-node-id]').getAttribute('data-node-id')\n    cloneNode.setAttribute('data-node-id',id)\n    cloneNode.setAttribute('contenteditable',false)\n    cloneNode.setAttribute('style', \"padding: 0;\")\n    let div = document.createElement('div')\n    div.setAttribute('class', 'previous-widgets-slot')\n    div.setAttribute('contenteditable', false)\n    div.setAttribute('style', \"padding: 0;\")\n    let root = div.attachShadow({ mode: 'open' })\n    root.innerHTML = `\n        \u003cstyle\u003e\n            iframe{\n                width:100%;\n                min-height:400px;\n                border:none;\n                margin:0;\n                padding:0\n            }\n        \u003c/style\u003e\n        `\n    root.appendChild(cloneNode)\n    return div\n};"
   }
 ]
