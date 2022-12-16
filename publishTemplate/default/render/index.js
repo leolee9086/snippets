@@ -3,6 +3,9 @@ import {生成文档大纲} from './outline.js'
 function 渲染页面内容(document) {
     let 页面数据 = 获取全部原始数据(document)
     document.getElementById('publish-content').innerHTML = 页面数据.content
+    document.querySelectorAll('.protyle-wysiwyg.protyle-wysiwyg--attr [data-node-id]').forEach(
+        el=>el.setAttribute('id',el.getAttribute('data-node-id'))
+    )
 }
 function 禁用编辑(document) {
     document.getElementById('publish-content').querySelectorAll(`[contenteditable]`).forEach(

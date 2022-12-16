@@ -1,6 +1,7 @@
 import { 获取全部原始数据 } from "../../../noob-service-syPublishServer/server/util/pipe.js";
 function 生成面板(){
     let html =`
+    <div class="fn__flex fn__flex-1" style="min-height: 64px; transition: var(--b3-width-transition); height: 652px;">
         <div data-type="wnd" data-id="" class="fn__flex-column fn__flex fn__flex-1">
             <ul class="fn__flex layout-tab-bar"></ul>
             <div class = "layout-tab-container fn__flex-1">
@@ -12,8 +13,9 @@ function 生成面板(){
                         </div>                    
                     </div>
                 </div> 
-            <div>
-        <div>
+            </div>
+        </div>
+    </div>
     `
     return html
     
@@ -78,7 +80,7 @@ data-def-path="">
     }">
         <use xlink:href="#icon${大纲条目.subType.toUpperCase()}"></use>
     </svg>
-    <span class="b3-list-item__text" title="${大纲条目.name||大纲条目.content}"><a href="/${
+    <span class="b3-list-item__text" title="${大纲条目.name||大纲条目.content}"><a href="#${
         大纲条目.id
       }">${大纲条目.name||大纲条目.content}</a></span>    
 </li>

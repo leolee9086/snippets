@@ -17,7 +17,7 @@ const 思源代理 = createProxyMiddleware({
     changeOrigin: true,
 })
 发布应用.use('/', async (req, res, next) => {
-    req.url == '/' ? res.redirect('/20200812220555-lj3enxa') : null
+    req.url == '/' ? res.redirect('/block/20200812220555-lj3enxa') : null
     next()
 })
 let 默认模板文件夹路径 = 代码片段路径 + 'publishTemplate/default'
@@ -55,8 +55,21 @@ async function 获取文档内容(块id) {
 
 发布应用.use('/appearance', 思源代理)
 
-发布应用.use('/stage', express.static(代码片段路径 + 'publishTemplate/default/stage'))
+发布应用.use('/static', express.static(代码片段路径 + 'publishTemplate/default/static'))
 
+async function 获取思源基础css(){
+    let cssURL = document.querySelector('link[href^="base"]').getAttribute('href')
+    return await(await fetch(window.location.pathname+cssURL)).text()
+}
+let 思源基础css内容 = await 获取思源基础css()
+
+发布应用.use('/base',async (req,res)=>{
+    if(req.url.endsWith('siyuanBase.css')){
+        res.setHeader('Content-Type', "text/css;charset=utf-8");
+        
+        res.end(思源基础css内容)
+    }
+})
 
 async function 判定附件权限(req) {
     let 附件名称 = req.url.split('/').pop()
@@ -82,7 +95,7 @@ async function 判定文档权限(块id) {
     console.log(文档权限)
     return (await 根据路径获取文档权限(文档路径)) == 'public'
 }
-发布应用.use('/:blockID', async (req, res, next) => {
+发布应用.use('/block/:blockID', async (req, res, next) => {
     if (await 判定文档权限(req.params.blockID)) {
         next()
     } else {
