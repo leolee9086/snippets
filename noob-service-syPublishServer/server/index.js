@@ -4,6 +4,7 @@ import '../../noobApi/util/requireHacker.js'
 import { 生成管线渲染器, 初始化原始数据} from './util/pipe.js'
 import { 根据路径获取文档权限 } from './authentic/block.js'
 import { 根据名称获取附件权限 } from './authentic/assets.js'
+import {获取可发布文档数据} from './util/block.js'
 require.setExternalDeps(代码片段路径 + `/noob-service-syPublishServer/node_modules`)
 const http = require('http')
 const express = require('express')
@@ -33,8 +34,14 @@ export async function 注入思源文档原始数据(req, res, 渲染结果) {
     let 文档属性 = await noobApi.核心api.getDocInfo(
         { id: 块id },
     );
+    let 可发布文档数据 = await 获取可发布文档数据()
+    let 笔记本目录= await noobApi.核心api.获取笔记本列表()
       页面内容数据.docOutline = 大纲数据
       页面内容数据.docInfo = 文档属性
+      页面内容数据.docList = 可发布文档数据
+      页面内容数据.notebooks
+      = 笔记本目录.notebooks
+
     //把所有的数据全都注入到这个元素里面去
     初始化原始数据(页面内容数据, 渲染结果)
 }

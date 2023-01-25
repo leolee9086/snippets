@@ -12,10 +12,15 @@ let 界面状态  = {
 }
 let 鼠标单击回调 = (鼠标事件)=>{
     界面状态.鼠标状态.最后鼠标点击元素=鼠标事件.target
-    界面状态.鼠标状态.最后鼠标点击事件=鼠标事件 
+    界面状态.鼠标状态.最后鼠标点击事件=鼠标事件
 }
 document.addEventListener(
     "click", (event) => {
+        鼠标单击回调(event)
+    }, true
+)
+document.addEventListener(
+    "contextmenu", (event) => {
         鼠标单击回调(event)
     }, true
 )

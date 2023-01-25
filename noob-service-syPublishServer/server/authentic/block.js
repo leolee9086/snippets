@@ -17,7 +17,6 @@ export async function 根据路径获取文档权限(文档路径){
             return 数据2.path.length-数据1.path.length
         }
     )[0]
-    console.log(最近上级文档发布范围属性)
     if(最近上级文档发布范围属性){
         return 最近上级文档发布范围属性.value
     }

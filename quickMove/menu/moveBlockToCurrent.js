@@ -62,7 +62,6 @@ document.addEventListener('keydown', async(e) => {
 )
 
 function 获取最近上级块id(target) {
-    console.log(target)
     if (target.getAttribute && target.getAttribute("data-node-id")) {
         return target.getAttribute("data-node-id")
     }

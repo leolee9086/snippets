@@ -1,5 +1,6 @@
 import { 获取全部原始数据 } from "../../../noob-service-syPublishServer/server/util/pipe.js"
 import {生成文档大纲} from './outline.js'
+import {生成文档树根节点} from './filetree.js'
 function 渲染页面内容(document) {
     let 页面数据 = 获取全部原始数据(document)
     document.getElementById('publish-content').innerHTML = 页面数据.content
@@ -48,5 +49,6 @@ export let 渲染管线 = [
     修改块链接, 
     修改超链接, 
     添加页脚,
-    生成文档大纲
+    生成文档大纲,
+    生成文档树根节点
 ]

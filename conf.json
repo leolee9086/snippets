@@ -20,7 +20,7 @@
     "name": "发布适配器",
     "memo": "",
     "type": "js",
-    "enabled": true,
+    "enabled": false,
     "content": "import ('/snippets/Publisher/index.js')"
   },
   {
@@ -28,7 +28,7 @@
     "name": "题图按钮",
     "memo": "",
     "type": "js",
-    "enabled": true,
+    "enabled": false,
     "content": "import ('/snippets/morebackGround/index.js')"
   },
   {
@@ -36,7 +36,7 @@
     "name": "发布服务器",
     "memo": "",
     "type": "js",
-    "enabled": true,
+    "enabled": false,
     "content": "import ('/snippets/noob-service-syPublishServer/index.js')"
   },
   {
@@ -44,7 +44,7 @@
     "name": "vite服务器",
     "memo": "",
     "type": "js",
-    "enabled": true,
+    "enabled": false,
     "content": "import ('/snippets/noob-service-vite/index.js')"
   },
   {
@@ -52,7 +52,23 @@
     "name": "挂件槽",
     "memo": "",
     "type": "js",
-    "enabled": true,
+    "enabled": false,
     "content": "function showPreviousWidgetsSlot() {\n    setInterval(DocumentShowPreviousWidget, 300);\n}\nDocumentShowPreviousWidget()\nshowPreviousWidgetsSlot()\nfunction DocumentShowPreviousWidget() {\n    var openDoc = document.querySelectorAll(\".layout-tab-container\u003e.fn__flex-1.protyle:not(.fn__none)\");\n    var allDocumentTitleElement = [];\n    for (let index = 0; index \u003c openDoc.length; index++) {\n        const element = openDoc[index];\n        element.setAttribute(\"withPreviousWidgets\", true);\n        allDocumentTitleElement.push(element.children[1].children[1].children[1]);\n    }\n\n    for (let index = 0; index \u003c allDocumentTitleElement.length; index++) {\n        const element = allDocumentTitleElement[index];\n\n        if ( !element.parentElement.querySelector('.previous-widgets-slot')\u0026\u0026element.parentElement.parentElement.querySelector('[data-node-id]')) {\n            var documentPreviousWidgetsSlotElement = CreatePreviousWidgetsSlot(element.parentElement);\n            element.parentElement.appendChild(documentPreviousWidgetsSlotElement)\n        }\n \n    }\n}\nfunction CreatePreviousWidgetsSlot(element) {\n    let cloneNode = element.parentElement.querySelector(\".protyle-wysiwyg.protyle-wysiwyg--attr\").cloneNode(false)\n    cloneNode.innerHTML = `\n    \u003cdiv class=\"iframe-content\"\u003e\n        \u003ciframe src=\"/widgets/${cloneNode.getAttribute('custom-previousWidget') || '更美观的文档自定义属性'}/\" \u003e\u003c/iframe\u003e\n    \u003c/div\u003e\n    `\n    let id = element.parentElement.parentElement.querySelector('[data-node-id]').getAttribute('data-node-id')\n    cloneNode.setAttribute('data-node-id',id)\n    cloneNode.setAttribute('contenteditable',false)\n    cloneNode.setAttribute('style', \"padding: 0;\")\n    let div = document.createElement('div')\n    div.setAttribute('class', 'previous-widgets-slot')\n    div.setAttribute('contenteditable', false)\n    div.setAttribute('style', \"padding: 0;\")\n    let root = div.attachShadow({ mode: 'open' })\n    root.innerHTML = `\n        \u003cstyle\u003e\n            iframe{\n                width:100%;\n                min-height:400px;\n                border:none;\n                margin:0;\n                padding:0\n            }\n        \u003c/style\u003e\n        `\n    root.appendChild(cloneNode)\n    return div\n};"
+  },
+  {
+    "id": "20221215143812-paafbnk",
+    "name": "主题修改器",
+    "memo": "",
+    "type": "js",
+    "enabled": false,
+    "content": "import ('/snippets/noob-service-themeEditor/index.js')"
+  },
+  {
+    "id": "20230124211653-u0bsjd6",
+    "name": "监听文件夹并导入",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content": "import ('/snippets/watchImport/index.js')"
   }
 ]

@@ -2,8 +2,6 @@ let 自定义菜单 = {}
 export class  自定义菜单原型{
     菜单注册表=[]
     constructor(){
-        自定义菜单[this.constructor.name]=this
-        console.log(自定义菜单)
     }
     get 待渲染菜单项目数组(){
         return this.菜单注册表.filter(
@@ -29,12 +27,35 @@ export class  自定义菜单原型{
             let 重复子菜单项 = 目标菜单项.子菜单配置.find(
                 待检查项子菜单项 => { return 待检查项子菜单项.id == 子菜单项.id }
             )
-            console.log(目标菜单项, 子菜单项)
             if (!重复子菜单项) {
                 目标菜单项.子菜单配置.push(子菜单项)
             }
         }
         else return
+    }
+    删除自定义菜单项(查找条件函数){
+        this.菜单注册表.forEach(
+            (菜单项,序号)=>{
+                if(查找条件函数(菜单项)){
+                    this.菜单注册表.splice(序号,1)
+                }
+            }
+        )
+    }
+    删除自定义子菜单项(查找条件函数){
+        this.菜单注册表.forEach(
+            菜单项=>{
+                if(菜单项.子菜单配置){
+                    菜单项.子菜单配置.forEach(
+                        菜单项,序号=>{
+                            if(查找条件函数(菜单项)){
+                                菜单项.子菜单配置.splice(序号,1)
+                            }
+                        }
+                    )
+                }
+            }
+        )
     }
 }
 export default 自定义菜单

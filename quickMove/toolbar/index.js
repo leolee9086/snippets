@@ -1,5 +1,5 @@
 import noobApi from "../../noobApi/index.js";
-import { 根据目标id移动块到文档 } from "../../noobApi/util/blocks.js";
+import { 根据目标id移动块到文档, 根据目标id移动块所在文档 } from "../../noobApi/util/blocks.js";
 export default function 注册工具栏() {
     let { 生成单个dom元素 } = noobApi.DOM工具
 
@@ -76,7 +76,12 @@ export default function 注册工具栏() {
         let 事件配置 = {
             mousemove: (e) => { e.currentTarget.classList.add("b3-menu__item--current") },
             mouseleave: (e) => { e.currentTarget.classList.remove("b3-menu__item--current") },
-            click: () => { 根据目标id移动块到文档(当前块id, 结果条目.id) }
+            click: () => { 
+                window.siyuan.ctrlIsPressed?                根据目标id移动块所在文档(当前块id, 结果条目.id)
+                :
+                根据目标id移动块到文档(当前块id, 结果条目.id) 
+            },
+         
         }
         let 条目元素 = 生成单个dom元素(条目模板, 事件配置)
         条目元素.appendChild(生成搜索结果子条目(结果条目))

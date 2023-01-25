@@ -22,14 +22,12 @@ function 生成面板(){
 }
 export  function 生成文档大纲(document) {
    let 大纲内容 =  获取全部原始数据(document).docOutline
-   console.log(获取全部原始数据(document))
    let html = 渲染大纲(大纲内容, document);
    let 大纲面板html = 生成面板()
    document.getElementById('panelLeft').innerHTML+=大纲面板html
    document.getElementById('panelLeft').querySelector('.sy__outline').innerHTML +=html
 }
  function  渲染大纲(大纲内容, document) {
-    console.log(大纲内容)
     let 文档条目 = `
         <div class="b3-list-item" title="${获取全部原始数据(document).docInfo.name.replace(
           ".sy",

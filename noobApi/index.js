@@ -2,6 +2,7 @@ import 工作空间 from './workspace/index.js'
 import { 代码片段路径 } from './util/file.js'
 import requireHacker from './util/requireHacker.js'
 if (!window.noobApi) {
+	await import('./api.js')
 	if (window.require) {
 		let { 监听文件修改 } = await import('./util/file.js')
 		let 监听选项 = {
@@ -15,8 +16,11 @@ if (!window.noobApi) {
 		}
 		监听文件修改(监听选项)
 		requireHacker.setExternalDeps(代码片段路径 + '/node_modules')
+		window.noobApi.事件桥服务器= (await import('./messageBridge/server.js'))['default']
 	}
-	await import('./api.js')
+	window.noobApi.主窗口事件桥= (await import('./messageBridge/mainBridge.js'))['default']
+	window.noobApi.事件桥类= (await import('./messageBridge/index.js'))['default']
+
 }
 
 export default window.noobApi

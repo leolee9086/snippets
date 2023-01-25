@@ -1,6 +1,5 @@
 import { 展平Layout } from "./Tab.js";
 export let tab注册表= {}
-
 export const hackLayout=()=>{
     let layouts = 展平Layout()
     layouts.forEach(
@@ -23,6 +22,5 @@ export const hackLayout=()=>{
         }
     )
 }
-
 setInterval(hackLayout,500)
 hackLayout()
