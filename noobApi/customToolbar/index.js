@@ -1,4 +1,7 @@
+import { 获取工具栏对应protyle, 获取工具栏对应range, 获取工具栏对应块元素 } from "./util.js"
+
 let 按钮注册表 = []
+let 工具栏状态= {}
 function 生成工具栏按钮元素(按钮配置) {
     let 临时容器 = document.createElement('div')
     临时容器.innerHTML = `
@@ -16,7 +19,13 @@ function 生成工具栏按钮元素(按钮配置) {
 	`
     //起个名字让它好记一点嘛
     let 按钮元素 = 临时容器.firstElementChild
-    按钮元素.addEventListener("click", 按钮配置.点击回调函数)
+    按钮元素.addEventListener("click",(e)=>{
+        工具栏状态.当前工具栏元素 = e.currentTarget.parentElement
+        工具栏状态.当前块元素 = 获取工具栏对应块元素(工具栏状态.当前工具栏元素)
+        工具栏状态.当前protyle=  获取工具栏对应protyle(工具栏状态.当前工具栏元素)
+        工具栏状态.当前range = 获取工具栏对应range(工具栏状态.当前工具栏元素)
+        按钮配置.点击回调函数(e)
+    })
     return 按钮元素
 }
 function 插入自定义按钮(工具栏元素) {
@@ -24,7 +33,10 @@ function 插入自定义按钮(工具栏元素) {
         按钮配置 => {
             //避免重复插入嘛
             if(!工具栏元素.querySelector(`[data-item-id="${按钮配置.id}"]`)){
+                let 按钮元素 = 生成工具栏按钮元素(按钮配置)
+                按钮元素.所在工具栏元素 = 工具栏元素
                 工具栏元素.appendChild(生成工具栏按钮元素(按钮配置))
+
             }
         }
     )
@@ -54,6 +66,7 @@ function 修改工具栏() {
 document.addEventListener("click", 修改工具栏)
 
 export default {
-    注册自定义工具栏按钮:注册自定义工具栏按钮
+    注册自定义工具栏按钮:注册自定义工具栏按钮,
+    工具栏状态:工具栏状态
 }
 
