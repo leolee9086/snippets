@@ -35,7 +35,7 @@ async function 增量设置块别名(块id,别名){
      noobApi.核心api.设置块属性({
         id:块id,
         attrs:{
-            alias:别名
+            alias:旧别名
         }
      })
 

@@ -78,6 +78,13 @@
     "type": "js",
     "enabled": true,
     "content": "import ('/snippets/quickSet/index.js')"
+  },
+  {
+    "id": "20230124211653-u0bsbc6",
+    "name": "快速重构",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content": "import ('/snippets/quickReconstitution/index.js')"
   }
-
 ]
