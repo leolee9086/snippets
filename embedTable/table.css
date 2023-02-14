@@ -1,0 +1,41 @@
+ table, table {
+    border-collapse: collapse;
+    empty-cells: show;
+    margin: 0;
+    overflow: auto;
+    border-spacing: 0;
+    display: inline-block;
+    width: max-content
+}
+
+ table tr td, table tr th, table tr td, table tr th {
+    background-color: var(--b3-theme-surface);
+    border-top: 1px solid var(--b3-theme-surface-lighter)
+}
+
+ table td, table th, table td, table th {
+    padding: 4px 8px;
+    border: 1px solid var(--b3-theme-surface-lighter);
+    box-sizing: border-box
+}
+
+ table td:empty::after, table th:empty::after, table td:empty::after, table th:empty::after {
+    content: "";
+    height: 16px;
+    display: inline-block
+}
+
+ table thead th, table thead td, table thead th, table thead td {
+    font-weight: 600
+}
+
+ table tbody th, table tbody td, table tbody th, table tbody td {
+    font-weight: normal
+}
+
+ table tbody tr:nth-child(2n) td, table tbody tr:nth-child(2n) td {
+    background-color: var(--b3-theme-background)
+}
+[contenteditable="true"]:has(div span.custom-shadow){
+    color:"red";
+}

@@ -86,5 +86,37 @@
     "type": "js",
     "enabled": true,
     "content": "import ('/snippets/quickReconstitution/index.js')"
+  },
+  {
+    "id": "20230209182851-6jwzue0",
+    "name": "块宽度调节",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content": "import('/snippets/blockHandle/index.js')"
+  },
+  {
+    "id": "20230209182851-6jwzue1",
+    "name": "嵌入块表格",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content": "import('/snippets/embedTable/index.js')"
+  },
+  {
+    "id": "20230209182851-6jwzue2",
+    "name": "真实块序号",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content": "import('/snippets/blockIndex/index.js')"
+  },
+  {
+    "id": "20230209182851-6jwzue3",
+    "name": "真实块序号",
+    "memo": "",
+    "type": "js",
+    "enabled": true,
+    "content": "import('/snippets/snippetsInNote/index.js')"
   }
 ]
