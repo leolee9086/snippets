@@ -36,7 +36,7 @@
     "name": "发布服务器",
     "memo": "",
     "type": "js",
-    "enabled": false,
+    "enabled": true,
     "content": "import ('/snippets/noob-service-syPublishServer/index.js')"
   },
   {
@@ -68,7 +68,7 @@
     "name": "监听文件夹并导入",
     "memo": "",
     "type": "js",
-    "enabled": true,
+    "enabled": false,
     "content": "import ('/snippets/watchImport/index.js')"
   },
   {

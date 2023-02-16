@@ -1,4 +1,4 @@
-let fg = require("fast-glob");
+/*let fg = require("fast-glob");
 
 let 总路径 = "D:/wiki";
 let 文件夹目录 = fs.readdirSync(总路径);
@@ -144,3 +144,4 @@ function 解析目录(文件路径) {
   let 文件列表 = JSON.parse(fs.readFileSync(列表文件路径, "utf-8"));
   return 文件列表;
 }
+*/

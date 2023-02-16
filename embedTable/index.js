@@ -1,9 +1,19 @@
 import { Model } from "./model.js";
 import { 重渲染配置表 } from "./replace.js";
 setTimeout(渲染所有嵌入块表格, 1000);
-new Model().all(() => {
+let model =new Model()
+/*model.all(() => {
   setTimeout(渲染所有嵌入块表格, 500);
-});
+});*/
+model.on('msg',()=>{
+  console.log("测试")
+  setTimeout(渲染所有嵌入块表格, 500);})
+setInterval(()=>{
+  model.send('msg',{
+    pushMode:0,
+    data:{aaa:0}
+  })
+},1000)
 setInterval(渲染所有嵌入块表格, 3000);
 async function 渲染所有嵌入块表格() {
   let 嵌入块列表 = document.querySelectorAll(

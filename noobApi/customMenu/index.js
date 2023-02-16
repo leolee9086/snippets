@@ -4,6 +4,8 @@ import {文档树菜单} from './filetreeMenu/index.js'
 import  {面包屑菜单} from './breadcrumbMenu/index.js'
 import {图片菜单} from './imageMenu/index.js'
 import { 引用块菜单 } from './blockRefMenu/index.js'
+import { 状态栏帮助菜单 } from './statusHelpMenu/index.js'
+
 import {批量渲染自定义菜单} from './util/render.js'
 let 自定义菜单 ={
     块标菜单,
@@ -11,7 +13,8 @@ let 自定义菜单 ={
     文档树菜单,
     面包屑菜单,
     图片菜单,
-    引用块菜单
+    引用块菜单,
+    状态栏帮助菜单
 }
 let popup = window.top.siyuan.menus.menu.popup
 //这里...args的含义是解构赋值

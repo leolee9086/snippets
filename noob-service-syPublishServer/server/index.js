@@ -9,7 +9,7 @@ require.setExternalDeps(代码片段路径 + `/noob-service-syPublishServer/node
 const http = require('http')
 const express = require('express')
 const 发布应用 = express()
-const 发布端口 = '81'
+const 发布端口 = '80'
 const fs = require('fs')
 const { createProxyMiddleware } = require('http-proxy-middleware')
 
@@ -115,7 +115,7 @@ async function 判定文档权限(块id) {
 
 let 发布服务器 = http.createServer(发布应用);
 发布服务器.listen(发布端口, () => {
-    console.log("发布服务已经启动")
+    console.log(`发布服务已经在${发布端口}启动`)
 
 })
 
