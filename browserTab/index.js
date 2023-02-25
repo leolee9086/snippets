@@ -6,13 +6,14 @@ if (window.require) {
 }
 function onclick(e) {
     if (e.target.dataset && e.target.dataset.type == 'a' && e.target.dataset.href) {
-        e.preventDefault()
-        e.stopPropagation()
         let wndElement = getWndParentElement(e.target)
         let layout
         if (!e.target.dataset.href || !e.target.dataset.href.startsWith('http')) {
          return
         }
+        e.preventDefault()
+        e.stopPropagation()
+
         if (wndElement) {
             layout = getLayoutByElement(wndElement, siyuan.layout.centerLayout)
             if (layout) {

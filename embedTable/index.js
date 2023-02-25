@@ -77,8 +77,6 @@ async function 渲染表格(嵌入块元素) {
       表格.appendChild(表头);
       表格.appendChild(表身);
         刷新表格(嵌入块元素, 表格);
-      
-      
     }
   }
 }
