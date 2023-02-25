@@ -19,6 +19,7 @@ if (!window.noobApi) {
 
     监听文件修改(监听选项);
     requireHacker.setExternalDeps(代码片段路径 + "/node_modules");
+
     try {
       if (require("express") && require("ws")) {
         window.noobApi.事件桥服务器 = (
@@ -36,5 +37,4 @@ if (!window.noobApi) {
     }
   }
 }
-
-export default window.noobApi;
+export default noobApi

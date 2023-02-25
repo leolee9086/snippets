@@ -1,0 +1,46 @@
+class BackgroundLoader {
+  constructor(loader, verbose = false) {
+    this._loader = loader;
+    this._assetList = [];
+    this._isLoading = false;
+    this._maxConcurrent = 1;
+    this.verbose = verbose;
+  }
+  add(assetUrls) {
+    assetUrls.forEach((a) => {
+      this._assetList.push(a);
+    });
+    if (this.verbose)
+      console.log("[BackgroundLoader] assets: ", this._assetList);
+    if (this._isActive && !this._isLoading) {
+      this._next();
+    }
+  }
+  async _next() {
+    if (this._assetList.length && this._isActive) {
+      this._isLoading = true;
+      const toLoad = [];
+      const toLoadAmount = Math.min(this._assetList.length, this._maxConcurrent);
+      for (let i = 0; i < toLoadAmount; i++) {
+        toLoad.push(this._assetList.pop());
+      }
+      await this._loader.load(toLoad);
+      this._isLoading = false;
+      this._next();
+    }
+  }
+  get active() {
+    return this._isActive;
+  }
+  set active(value) {
+    if (this._isActive === value)
+      return;
+    this._isActive = value;
+    if (value && !this._isLoading) {
+      this._next();
+    }
+  }
+}
+
+export { BackgroundLoader };
+//# sourceMappingURL=BackgroundLoader.mjs.map

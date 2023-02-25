@@ -1,0 +1,25 @@
+class BatchPart {
+  constructor() {
+    this.reset();
+  }
+  begin(style, startIndex, attribStart) {
+    this.reset();
+    this.style = style;
+    this.start = startIndex;
+    this.attribStart = attribStart;
+  }
+  end(endIndex, endAttrib) {
+    this.attribSize = endAttrib - this.attribStart;
+    this.size = endIndex - this.start;
+  }
+  reset() {
+    this.style = null;
+    this.size = 0;
+    this.start = 0;
+    this.attribStart = 0;
+    this.attribSize = 0;
+  }
+}
+
+export { BatchPart };
+//# sourceMappingURL=BatchPart.mjs.map

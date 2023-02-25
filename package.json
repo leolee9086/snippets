@@ -5,6 +5,7 @@
     "fast-glob": "^3.2.12",
     "http-proxy-middleware": "^2.0.6",
     "markdown-it": "^13.0.1",
+    "pixijs": "^7.0.4",
     "vite": "^2.9.15",
     "ws": "^8.11.0"
   }

@@ -1,0 +1,26 @@
+class GraphicsData {
+  constructor(shape, fillStyle = null, lineStyle = null, matrix = null) {
+    this.points = [];
+    this.holes = [];
+    this.shape = shape;
+    this.lineStyle = lineStyle;
+    this.fillStyle = fillStyle;
+    this.matrix = matrix;
+    this.type = shape.type;
+  }
+  clone() {
+    return new GraphicsData(this.shape, this.fillStyle, this.lineStyle, this.matrix);
+  }
+  destroy() {
+    this.shape = null;
+    this.holes.length = 0;
+    this.holes = null;
+    this.points.length = 0;
+    this.points = null;
+    this.lineStyle = null;
+    this.fillStyle = null;
+  }
+}
+
+export { GraphicsData };
+//# sourceMappingURL=GraphicsData.mjs.map
