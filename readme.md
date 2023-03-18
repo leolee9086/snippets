@@ -16,3 +16,7 @@ https://zhuanlan.zhihu.com/p/585016668
 https://zhuanlan.zhihu.com/p/585013905
 
 https://zhuanlan.zhihu.com/p/585011140
+
+其中的功能将会慢慢合并到noob中，可以参考这里：
+
+https://github.com/leolee9086/noob
