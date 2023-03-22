@@ -1,4 +1,4 @@
-import noobApi from "../../noobApi/index.js";
+import noobApi from "../noobapi.js";
 const { 根据目标id移动块到文档, 根据目标id移动块所在文档 } = noobApi.内容块;
 function 渲染子菜单(e) {
   let 当前菜单项 = e.currentTarget;

@@ -1,16 +1,7 @@
-import noobApi from "../noobApi/index.js";
+
 import { 序号设置 } from "./序号设置.js";
-noobApi.自定义菜单.状态栏帮助菜单.注册自定义菜单项({
-id: "测试菜单项",
-文字: `测试菜单项`,
-图标: `#iconRefresh`,
-点击回调函数: () =>{
-  //window.location.reload()
-  },
-事件配置:{
-  click:()=>{console.log("测试")}
-}
-})
+import noobApi from "../noobapi.js";
+生成标题序号()
 生成任务列表序号();
 //生成标题序号()
 setTimeout(生成任务列表序号, 1000);

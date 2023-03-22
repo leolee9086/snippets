@@ -1,4 +1,4 @@
-import noobApi from "../../noobApi/index.js";
+import noobApi from "../noobapi.js";
 const {根据id移动块到目标id后} = noobApi.内容块
 export default function 注册菜单(){
     noobApi.自定义菜单.块标菜单.注册自定义菜单项(

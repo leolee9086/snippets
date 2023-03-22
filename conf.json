@@ -5,7 +5,7 @@
     "memo": "",
     "type": "js",
     "enabled": true,
-    "content": "if(window.require){import('file://D:/开发/noob-core/index.js')}else{import(`http://192.168.31.223:${parseInt(window.location.port)+3}/core/frontEnd/index.js`)}"
+    "content": "if(window.require){import('file://D:/开发/noob-core/index.js')}else{import(`http://192.168.31.223:${parseInt(window.location.port)+3}/core/frontEnd/index.js`)};"
   },
  
   {

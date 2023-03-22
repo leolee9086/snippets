@@ -1,5 +1,5 @@
 import { BrowserTab } from './browserTab.js'
-import noobApi from "../noobApi/index.js"
+import noobApi from "../noobapi.js";
 const  { getWndParentElement, getLayoutByElement } =noobApi.布局.util
 if (window.require) {
     document.addEventListener('click', onclick, true)

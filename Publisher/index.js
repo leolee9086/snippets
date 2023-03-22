@@ -1,4 +1,4 @@
-import noobApi from "../noobApi/index.js";
+import noobApi from "../noobapi.js";
 
 if (window.$syncer) {
     let allAccounts = []
