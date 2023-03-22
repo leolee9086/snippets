@@ -20,3 +20,11 @@ https://zhuanlan.zhihu.com/p/585011140
 其中的功能将会慢慢合并到noob中，可以参考这里：
 
 https://github.com/leolee9086/noob
+
+## 更新说明：
+
+部分代码片段逐渐插件化，插件化片段依赖noob-core进行编译和加载（相对地，它们也能更方便编写并使用更多功能）。
+
+有关noob-core的安装方法，请参考对应仓库的readme
+
+https://github.com/leolee9086/noob-core
