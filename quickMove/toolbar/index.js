@@ -1,4 +1,4 @@
-import noobApi from "../../noobApi/index.js";
+import noobApi from "../noobapi.js";
 import {
   根据目标id移动块到文档,
   根据目标id移动块所在文档,
