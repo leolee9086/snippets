@@ -31,14 +31,7 @@
     "enabled": false,
     "content": "import ('/snippets/Publisher/index.js')"
   },
-  {
-    "id": "20221122201806-rr55gk4",
-    "name": "题图按钮",
-    "memo": "",
-    "type": "js",
-    "enabled": false,
-    "content": "import ('/snippets/morebackGround/index.js')"
-  },
+
   {
     "id": "20221122201604-114514c",
     "name": "发布服务器",
