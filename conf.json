@@ -1,20 +1,13 @@
 [
   {
     "id": "20230209182851-6jwzue9",
-    "name": "noob核心引导,请不要改动这个代码片段",
+    "name": "noob核心引导,除了noob-core的位置之外,请不要改动这个代码片段",
     "memo": "",
     "type": "js",
     "enabled": true,
     "content": "if(window.require){import('file://D:/开发/noob-core/index.js')}else{import(`http://192.168.31.223:${parseInt(window.location.port)+3}/core/frontEnd/index.js`)}"
   },
-  {
-    "id": "20221121104629-vfx5po4",
-    "name": "自定义菜单",
-    "memo": "",
-    "type": "js",
-    "enabled": true,
-    "content": "import ('/snippets/noobApi/index.js')"
-  },
+ 
   {
     "id": "20221122201806-td60igd",
     "name": "快速移动",
