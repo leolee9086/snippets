@@ -1,4 +1,4 @@
-import { Plugin, frontEndApi,kernelApi } from "siyuan";
+import {Plugin,frontEndApi,kernelApi} from 'https://esm.sh/siyuan-noob@1.1.3' 
 frontEndApi.DOMUtil.addIcon(
   {
     id: "iconUnsplash",
@@ -87,25 +87,7 @@ export default class moreBcakground extends Plugin {
   async 获取unsplash随机头图(event){
     event.preventDefault();
     let 文档id = this.获取文档id(event.target)
-    let 头图元素组 = document.querySelectorAll(`.protyle-background[data-node-id="${文档id}"] div.protyle-background__img img`)
-    console.log(文档id)
-    let img = await fetch("https://source.unsplash.com/random")
-    console.log(img)
-    let  imgurl = img.url
-    头图元素组.forEach(
-      el=>{
-        el.setAttribute("style","")
-        el.setAttribute("src",imgurl)
-        }
-    )
-    kernelApi.setBlockAttrs(
-      {
-        id:文档id,
-        attrs:{
-          "title-img":`background-image:url(${imgurl})`
-        }
-      }
-    )
+    await unsplashRandomCover(文档id)
   }
   async 获取unsplash头图(event) {
     event.preventDefault();
@@ -215,4 +197,26 @@ export default class moreBcakground extends Plugin {
       }
     )
   }
+}
+export let unsplashRandomCover =async (文档id)=>{
+    let 头图元素组 = document.querySelectorAll(`.protyle-background[data-node-id="${文档id}"] div.protyle-background__img img`)
+    console.log(文档id)
+    let img = await fetch("https://source.unsplash.com/random")
+    console.log(img)
+    let  imgurl = img.url
+    头图元素组.forEach(
+      el=>{
+        el.setAttribute("style","")
+        el.setAttribute("src",imgurl)
+        }
+    )
+    kernelApi.setBlockAttrs(
+      {
+        id:文档id,
+        attrs:{
+          "title-img":`background-image:url(${imgurl})`
+        }
+      }
+    )
+
 }

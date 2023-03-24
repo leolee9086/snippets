@@ -1,8 +1,9 @@
 {
   "name": "noob-plugin-morebackground",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "noob的一个插件，让笔记能够使用更多的背景源",
   "main": "index.js",
+  "module":"index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,4 +1,15 @@
 {
     "author":"leolee9086",
-    "descirbe":"添加了一些头图按钮给思源"
+    "discirbe":"一个简单的插件,能够使思源使用更多的头图来源",
+    "loadWithoutBackEnd":false,
+    "evironments":{
+        "APP":true,
+        "BROWSER":true,
+        "MOBILE":false,
+        "PUBLISH":{
+            "ifdef":{
+                "publish":true
+            }
+        }
+    }
 }

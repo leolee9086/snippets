@@ -1,0 +1,12 @@
+{
+    "include": ["noob.d.ts"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "lib": ["ESNext", "DOM"],
+        "paths": {
+            "@/*": ["./src/*"]
+        }
+    },
+
+  
+}
